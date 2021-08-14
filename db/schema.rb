@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_08_14_104426) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.text "op"
+    t.text "opinion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
