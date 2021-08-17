@@ -3,7 +3,8 @@
 </tbody>
 </table>
 <h2>User info</h2>
-<%= image_tag() %>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+
 <p>name <%= @user.name %></p>
 <p>introdaction</p>
 
@@ -50,8 +51,8 @@
 <td>
 </td>
 <td>
-<%= link_to "Show", post_book_path(current_user) %>
-<%= link_to "Destroy", post_book_path(current_user), method: :delete, "data-confirm" => "Are you sure?" %>
+<%= link_to "Show", post_books_path(current_user) %>
+<%= link_to "Destroy", post_books_path(current_user), method: :delete, "data-confirm" => "Are you sure?" %>
 
 </td>
 </tr>
