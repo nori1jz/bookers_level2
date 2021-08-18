@@ -8,6 +8,10 @@
 <p>name <%= @user.name %></p>
 <p>introdaction</p>
 
+<% if @user.id == current_user.id %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+<% end %>
+
 <h2>New book</h2>
 <% if @post_book.errors.any? %>
   <%= @post_book.errors.count %>error prohibited this book from being saved:
@@ -51,9 +55,12 @@
 <td>
 </td>
 <td>
+<% if post_book.user == current_user %>
+
 <%= link_to "Edit", edit_post_book_path(post_book) %>
-<%= link_to "Destroy", post_books_path(current_user), method: :delete, "data-confirm" => "Are you sure?" %>
+<%= link_to "Destroy", post_book_path(post_book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+<% end %>
+<% end %>
 
 </td>
 </tr>
-<% end %>

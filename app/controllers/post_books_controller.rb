@@ -9,8 +9,10 @@ class PostBooksController < ApplicationController
     end
 
     def index
+        @user = User.find(params[:id])
         @post_books = PostBook.all
         @post_book = PostBook.new
+        @user = @post_book.user
     end
 
     def new
@@ -34,8 +36,8 @@ class PostBooksController < ApplicationController
     end
 
     def destroy
-       post_book = PostBook.find(params[:id])
-       post_book.destroy
+       @post_book = PostBook.find(params[:id])
+       @post_book.destroy
        redirect_to post_books_path
     end
 

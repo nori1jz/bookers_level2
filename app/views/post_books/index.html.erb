@@ -2,6 +2,12 @@
 
 </tbody>
 </table>
+<h2>User info</h2>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+
+<p>name <%= @user.name %></p>
+<p>introdaction</p>
+
 <h2>New book</h2>
 <% if @post_book.errors.any? %>
   <%= @post_book.errors.count %>error prohibited this book from being saved:
@@ -35,19 +41,23 @@
 
 <tbody>
 <% @post_books.each do |post_book| %>
+
 <tr>
 <td>
-<%= post_book.title %>
+<%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+
+<%= link_to post_book_path(post_book) do %>
+
+  <%= post_book.title %>
+<% end %>
 </td>
 <td>
 <%= post_book.body %>
 </td>
 <td>
-<%= post_book.user.name %>
+
 </td>
 <td>
-<%= link_to "Show", post_book_path(current_user) %>
-<%= link_to "Destroy", post_book_path(current_user), method: :delete, "data-confirm" => "Are you sure?" %>
 
 </td>
 </tr>

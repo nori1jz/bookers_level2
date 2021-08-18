@@ -7,6 +7,7 @@
 
 <p>name <%= @user.name %></p>
 <p>introdaction</p>
+<%= @user.introdaction %>
 
 <h2>New book</h2>
 <% if @new_post_book.errors.any? %>
@@ -28,7 +29,7 @@
 
 <% end %>
 
-<h1>Books</h1>
+<h1>Book detail</h1>
 
 <table>
 <thead>
@@ -50,8 +51,11 @@
 <td>
 </td>
 <td>
+<% if @post_book.user == current_user %>
+
 <%= link_to "Edit", edit_post_book_path(@post_book) %>
-<%= link_to "Destroy", post_books_path(@post_book), method: :delete, "data-confirm" => "Are you sure?" %>
+<%= link_to "Destroy", post_book_path(@post_book), method: :delete, "data-confirm" => "Are you sure?" %>
+<% end %>
 
 </td>
 </tr>
