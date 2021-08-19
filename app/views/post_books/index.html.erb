@@ -6,7 +6,11 @@
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 
 <p>name <%= @user.name %></p>
-<p>introdaction</p>
+<p>introdaction</p> <%= @user.introduction %>
+
+<% if @user.id == current_user.id %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+<% end %>
 
 <h2>New book</h2>
 <% if @post_book.errors.any? %>

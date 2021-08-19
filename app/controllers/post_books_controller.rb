@@ -9,10 +9,10 @@ class PostBooksController < ApplicationController
     end
 
     def index
-        @user = User.find(params[:id])
+        @user = current_user
         @post_books = PostBook.all
         @post_book = PostBook.new
-        @user = @post_book.user
+        
     end
 
     def new

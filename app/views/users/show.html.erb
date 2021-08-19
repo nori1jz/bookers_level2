@@ -6,7 +6,7 @@
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 
 <p>name <%= @user.name %></p>
-<p>introdaction</p>
+<p>introduction　<%= @user.introduction %></p>
 
 <% if @user.id == current_user.id %>
   <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
@@ -47,6 +47,7 @@
 <% @post_books.each do |post_book| %>
 <tr>
 <td>
+<%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
 <%= post_book.title %>
 </td>
 <td>
