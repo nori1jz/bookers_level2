@@ -28,7 +28,7 @@
 <h4>Opinion</h4>
 <%= f.text_area :body %>
 
-<br><%= f.submit 'Create Book' %></br>
+<br><%= f.submit 'Create Book', class:"btn btn-success" %></br>
 
 <% end %>
 
@@ -43,19 +43,15 @@
 </tr>
 </thead>
 
-<tbody>
 <% @post_books.each do |post_book| %>
-<tr>
-<td>
+
+
 <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
 <%= post_book.title %>
-</td>
-<td>
+
 <%= post_book.body %>
-</td>
-<td>
-</td>
-<td>
+
+
 <% if post_book.user == current_user %>
 
 <%= link_to "Edit", edit_post_book_path(post_book) %>
@@ -63,5 +59,16 @@
 <% end %>
 <% end %>
 
-</td>
-</tr>
+<footer>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="mx-auto">
+        <p>CopyRight Infratop.inc</p>
+      </div>
+    </div>
+  </div>
+</footer> 
+
+
+
+

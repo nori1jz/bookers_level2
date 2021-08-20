@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   # def before_sign_in_path_for
   #   root_path
   # end
-  protected
 
   def after_sign_in_path_for(resource)
     user_path(resource)
@@ -15,8 +14,9 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :introduction])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,])
   end
 end
