@@ -24,7 +24,7 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
             <li>
-             <a class="fas fa-home nav-link text-light" href="users/:id"> Home</a>
+              <%= link_to user_path(current_user),class:'fas fa-home nav-link text-light' do %> Home<% end %>
             </li>
             <li>
              <a class="fas fa-users nav-link text-light" href="/users"> Users</a>
@@ -43,7 +43,7 @@
                 <a class="fas fa-home nav-link text-light" href="/"> Home</a>
               </li>
               <li>
-                <a class="fas fa-link nav-link text-light" href="/homes/about"> About</a>
+                <a class="fas fa-link nav-link text-light" href="/home/about"> About</a>
               </li>
               <li>
                 <a class="fas fa-user-plus nav-link text-light" href="/users/sign_up"> Sign up</a>
@@ -58,7 +58,13 @@
       </nav>
 
     <% end %>
+　　</header>
+　　<main>
+　　  <%= yield %>
+　　</main>
+　　<footer>
+　　  <p class="text-center">CopyRight Infratop.inc</p>
+　　</footer>
 
-    <%= yield %>
   </body>
 </html>

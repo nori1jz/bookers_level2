@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
     # before_action :logged_in_user, only: [:index, :edit, :update]
-    before_action :correct_user,   only: [:edit, :update]
+    # before_action :current_user,   only: [:edit, :update]
 
     def show
         @user = User.find(params[:id])
-        @post_books = @user.post_books
-        @post_book = PostBook.new
+        @books = @user.books
+        @book = Book.new
     end
 
     def edit
@@ -20,12 +20,12 @@ class UsersController < ApplicationController
 
     def index
         @user = current_user
-        @post_book = PostBook.new
+        @book = Book.new
         @users = User.all
     end
     
     def new
-        @post_book = PostBook.new
+        @book = Book.new
     end
 
 
