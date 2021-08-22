@@ -26,7 +26,7 @@ class BooksController < ApplicationController
 
             redirect_to book_path(@book.id), notice: 'Book was successfully created.'
         else
-            render :new
+            render :index
         end
 
     end
