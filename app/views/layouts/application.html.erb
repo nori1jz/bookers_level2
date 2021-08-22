@@ -46,10 +46,10 @@
                 <a class="fas fa-link nav-link text-light" href="/home/about"> About</a>
               </li>
               <li>
-                <a class="fas fa-user-plus nav-link text-light" href="/users/sign_up"> Sign up</a>
+                <%= link_to new_user_registration_path,class:'fas fa-user-plus nav-link text-light' do %> sign up<% end %>
               </li>
               <li>
-                <a class="fas fa-sign-in-alt nav-link text-light" href="/users/sign_in"> login</a>
+                <%= link_to new_user_session_path,class:'fas fa-sign-in-alt nav-link text-light' do %> login<% end %>
               </li>
             </ul>
           </div>

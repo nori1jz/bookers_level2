@@ -48,7 +48,7 @@
         <% end %>
 
       </div>
-      
+
 <div class="col-md-8 offset-md-1">
 <h1>Books</h1>
 
@@ -65,12 +65,15 @@
 <% @books.each do |book| %>
 
 <tr>
-<td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
+<td><%= link_to user_path(book.user) do %>
 
-<%= link_to book_path(book) do %>
-<td><%= book.title %></td>
-<% end %>
-</td>
+<%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+<% end %></td>
+
+<td><%= link_to book_path(book) do %>
+<%= book.title %>
+<% end %></td>
+
 <td>
 <td><%= book.body %></td>
 </td>
