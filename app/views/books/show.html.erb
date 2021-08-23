@@ -18,9 +18,9 @@
             </tr>
             <br>
             <tr>
-              <% if @user.id == current_user.id %>
-              <th class="btn btn-light w-100"><%= link_to  edit_user_path(current_user)  do %><i class="fas fa-user-cog"></i><%end%></th>
-             <% end %>
+              <%# if @user.id == current_user.id %>
+              <th class="btn btn-light w-100"><%= link_to "", edit_user_path(@user),class: "fas fa-user-cog" %></th>
+             <%# end %>
             </tr>
           </tbody>
         </table>
@@ -66,7 +66,7 @@
           <%= @user.name %>
     <% end %></td>
     <td><%= link_to book_path(@book.id) do %>
-      <%= @book.title %><
+      <%= @book.title %>
     <% end %></td>
     <td><%= @book.body %></td>
     <% if @book.user == current_user %>
