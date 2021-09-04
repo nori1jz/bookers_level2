@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 2..20, minimum: 2 }, uniqueness: true
   
   validates :introduction, presence: false, length: { maximum: 50 } 
+  
+  def already_favorited?(book)
+    self.favorites.exists?(book_id: book.id)
+  end
 end

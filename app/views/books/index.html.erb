@@ -76,25 +76,19 @@
 <%= link_to "#{book.comments.count} コメント", book_path(book.id) %>
 </td>
 <td>
-    <% if @book.favorited_by?(current_user) %>
-  <p>
-    <%= link_to book_favorites_path(@book), method: :delete do %>
-      ♥<%= @book.favorites.count %> いいね
-    <% end %>
-  </p>
+    <% if current_user.already_favorited?(book) %>
+      <%= link_to 'いいねを外す', book_favorites_path(book), method: :delete %>
     <% else %>
-  <p>
-    <%= link_to book_favorites_path(@book), method: :post do %>
-      ♡<%= @book.favorites.count %> いいね
+      <%= link_to 'いいね', book_favorites_path(book), method: :post %>
     <% end %>
-  </p>
-
+    <%= book.favorites.count %>
 </td>
 </tr>
 <% end %>
-<% end %>
+<%# end %>
 </tbody>
 </table>
 </div>
 </div>
 </div>
+
