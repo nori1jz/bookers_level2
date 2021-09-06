@@ -77,15 +77,19 @@
 </td>
 <td>
     <% if current_user.already_favorited?(book) %>
-      <%= link_to 'いいねを外す', book_favorites_path(book), method: :delete %>
+      <%= link_to book_favorites_path(book), method: :delete do %>
+        ♥<%= book.favorites.count %> いいね
+      <% end %>
+
     <% else %>
-      <%= link_to 'いいね', book_favorites_path(book), method: :post %>
+      <%= link_to book_favorites_path(book), method: :post do %>
+        ♡<%= book.favorites.count %> いいね
     <% end %>
-    <%= book.favorites.count %>
+    <%#= book.favorites.count %>
 </td>
 </tr>
 <% end %>
-<%# end %>
+<% end %>
 </tbody>
 </table>
 </div>
