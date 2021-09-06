@@ -15,6 +15,15 @@
               <th>introduction</th>
               <th><%= @user.introduction %></th>
             </tr>
+              <tr>
+              <th>follows</th>
+              <th><%= link_to @user.followings.count, followings_user_path(@user) %></th>
+            </tr>
+            <tr>
+              <th>followers</th>
+              <th><%= link_to @user.followers.count, followers_user_path(@user) %></th>
+            </tr>
+
           </tbody>
         </table>
 
@@ -66,6 +75,19 @@
 <tr>
 <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
 <td><%= user.name %></td>
+<td><p class="text-small">
+  <%= link_to @user.followings.count, followings_user_path(@user) %>　フォロー<%= link_to @user.followers.count, followers_user_path(@user) %> フォロワー
+  </p></td>
+<% if @user.is_followed_by?(current_user) %>
+  <td><%= link_to user_relationships_path(@user), method: :delete do %>
+    <button class="btn btn-danger">フォロー解除</button>
+<% end %></td>
+<% else %>
+  <td><%= link_to user_relationships_path(@user), method: :post do %>
+    <button class="btn btn-primary">フォロー</button>
+<% end %></td>
+<% end %>
+
 <td><%= link_to 'Show',  user_path(user[:id]) %></td>
 
 <% end %>

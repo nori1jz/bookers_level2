@@ -31,12 +31,23 @@ class UsersController < ApplicationController
         @user = current_user
         @book = Book.new
         @users = User.all
+        @users = User.where.not(id: current_user.id)
         
     end
     
-    def new
-        @book = Book.new
-    end
+    def followings
+      user = User.find(params[:id])
+      @users = user.followings
+    end 
+    
+    def followers
+      user = User.find(params[:id])
+      @users = user.followers
+    end  
+    
+    # def new
+    #     @book = Book.new
+    # end
 
 
 
