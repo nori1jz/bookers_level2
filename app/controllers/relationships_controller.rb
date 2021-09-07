@@ -2,6 +2,10 @@ class RelationshipsController < ApplicationController
   before_action :authenticate_user!
   def create
     following = current_user.relationships.build(follower_id: params[:user_id])
+    if params[:user_id] == current_user.id 
+    redirect_to request.referrer || root_path
+    end
+
     following.save
     redirect_to request.referrer || root_path
   end
