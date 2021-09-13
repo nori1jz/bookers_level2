@@ -9,9 +9,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find_by(id: params[:id], book_id: params[:book_id]).destroy
-    comment.book = @book.id
-    comment = @book.book_comments.find(params[:id])
+    @book = Book.find(params[:book_id])
+    comment = @book.comments.find(params[:id])
+    comment.destroy
+    
+    # Comment.find_by(id: params[:id], book_id: params[:book_id]).destroy
+    # comment.book = @book.id
+    # comment = @book.comments.find(params[:id])
     # redirect_to book_path(params[:book_id])
   end
 
